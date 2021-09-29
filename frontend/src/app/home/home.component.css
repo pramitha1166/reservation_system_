@@ -1,0 +1,25 @@
+.top-header {
+    background-color: #003580;
+}
+
+.todo-label {
+    margin-top: 60px;
+}
+.todo-label .todo-card {
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    border-radius: 4px;
+}
+.todo-label .todo-card .content {
+    margin-left: 10px;
+}
+
+.todo-label .todo-card .content h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+}

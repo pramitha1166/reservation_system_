@@ -1,0 +1,71 @@
+<div class="search-section p-5">
+    <div class="container">
+        <h3>Where to next, Wanigarathne?</h3>
+        <p>Find exclusive Genius rewards in every corner of the world!</p>
+        <div class="search-bar">
+            <form class="row">
+                <div class="col-lg-4 mb-2 col-12">
+                    <div class="">
+                        <ng-autocomplete
+                            [data]="searchData"
+                            [searchKeyword]="keyword"
+                            [itemTemplate]="itemTemplate"
+                            [notFoundTemplate]="notFoundTemplate"
+                            placeholder="Where do you want to go?"
+                            (inputChanged)="onChangeSearch($event)"
+                            (selected)="onSelected($event)"
+                            (inputCleared)="onCleared()"
+                        >
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate let-item>
+                            <a [innerHTML]="item.location"></a>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-2 col-12 col-md-12">
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="col-lg-3 form-group mb-2 col-12 col-md-12">
+                   <div class="num-of-person" (click)="showAdlutDrop()">
+                       <i class="fas fa-user"></i>
+                        <span>{{numberOfAdults}} adults . {{numberOfChildren}} child . {{numberOfRooms}} rooms</span>
+                        <i class="fas fa-caret-square-down"></i>
+                   </div>
+                   <div [class.d-none]="!showAdultFilter" class="num-of-person-section">
+                       <div class="count-item">
+                           <p>Adults</p>
+                           <div class="count">
+                               <button (click)="removeAdult()" class="btn">-</button>
+                               <p>{{numberOfAdults}}</p>
+                               <button class="btn" (click)="addAdult()">+</button>
+                           </div>
+                       </div>
+                       <div class="count-item">
+                        <p>Children</p>
+                        <div class="count">
+                            <button class="btn" (click)="removeChild()">-</button>
+                            <p>{{numberOfChildren}}</p>
+                            <button class="btn" (click)="addChild()">+</button>
+                        </div>
+                       </div>
+                       <div class="count-item">
+                        <p>Rooms</p>
+                        <div class="count">
+                            <button class="btn" (click)="removeRoom()">-</button>
+                            <p>{{numberOfRooms}}</p>
+                            <button class="btn" (click)="addRoom()">+</button>
+                        </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="col-lg-2 mb-2 col-12">
+                    <button [class.disabled]="location_id==9999" (click)="onSearch()" class="btn" style="background-color: #003580;color: white;">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

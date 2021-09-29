@@ -1,0 +1,46 @@
+.top-header {
+    background-color: #003580;
+}
+
+.up-header {
+    padding: 16px 4px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.up-header .logo h3 {
+    color: white;
+    font-weight: 800;
+}
+
+.up-header nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.up-header nav ul li {
+    margin-left: 10px;
+}
+
+
+.up-header .logo span {
+    color: #0071c2;
+    font-weight: 800;
+}
+
+
+@media (max-width: 900px) {
+    .up-header {
+       flex-direction: column;
+       align-items: center; 
+    }
+    .up-header nav ul {
+        margin-top: 10px;
+    }
+    .bottom-header {
+        padding-top: 0px;
+    }
+}
+

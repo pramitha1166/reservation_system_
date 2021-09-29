@@ -1,0 +1,149 @@
+.top-header {
+    background-color: #003580;
+}
+
+.autocomplete-container {
+    width: 90%;
+}
+
+.path {
+    margin-top: 5px;
+}
+
+.path ul {
+    list-style: none;
+    display: flex;
+}
+
+.path ul li {
+    margin-right: 20px;
+}
+
+.path ul li a {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.path ul li p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/*filter by*/
+
+.left .filter-by {
+    width: 90%;
+    margin-top: 20px;
+    border: 1px solid #c6c6c6;
+    padding: 20px 10px;
+}
+
+
+
+.left .filter-by .filter-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.left .filter-by .filter-content .filter-check {
+    display: flex;
+}
+
+.left .filter-by .filter-content .filter-check input {
+    margin-top: 5px;
+}
+
+.left .filter-by .filter-content p {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/*filter container*/
+
+.left .filter-container {
+    width: 90%;
+    background-color: #febb02;
+    padding: 30px 20px;
+}
+
+.left .filter-container h4 {
+    font-weight: bold;
+}
+
+.left .filter-container .input-item {
+    margin-top: 10px;
+}
+
+.left .filter-container .input-item p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.left .filter-container .input-item .input-item-container {
+    background-color: white;
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    align-items: center;
+}
+
+.left .filter-container .input-item .input-item-container input {
+    border: none;
+    width: 100%;
+    margin-left: 10px;
+}
+.left .filter-container .input-item .input-item-container select {
+    border: none;
+    width: 100%;
+    -moz-appearance: none;
+    /* for Safari, Chrome, Opera */
+    -webkit-appearance: none;
+    margin-left: 10px;
+}
+
+.left .filter-container .input-item .input-item-container select::-ms-expand {
+    display: none;
+}
+.left .filter-container button {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #003580;
+    color: white;
+}
+
+.right .search-card {
+    padding: 20px;
+    border: 1px solid #c6c6c6;
+}
+
+.right .search-card .description h3 {
+    color: #003580;
+    font-weight: bold;
+}
+
+.right .search-card .action button {
+    background-color: #003580;
+    color: white;
+    width: 100%;
+}
+
+.right .search-card .action .review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right .search-card .action .review .right {
+    background-color: #003580;
+    width: 40px;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5.81818px 5.81818px 5.81818px 0;
+    font-weight: 800;
+}

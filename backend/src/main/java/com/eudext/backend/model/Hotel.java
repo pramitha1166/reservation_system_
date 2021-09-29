@@ -3,6 +3,7 @@ package com.eudext.backend.model;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Hotel {
@@ -14,6 +15,9 @@ public class Hotel {
     private String name;
     private String description;
     private String image;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> rooms;
 
     @Column(columnDefinition = "boolean default false")
     private boolean swimmingPool;

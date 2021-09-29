@@ -26,4 +26,7 @@ public class LocationService {
         return locationRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Location not found with id of "+ id));
     }
 
+    public List<Location> getLocationByLocation(String city, String country, String state) {
+        return locationRepo.findByCityContainingOrCountryContainingOrStateContaining(city, country, state);
+    }
 }

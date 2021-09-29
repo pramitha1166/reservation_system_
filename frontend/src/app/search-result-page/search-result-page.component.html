@@ -1,0 +1,199 @@
+<header class="top-header">
+    <app-header></app-header>
+    <app-bottom-header></app-bottom-header>
+</header>
+<div class="container path">
+    <ul>
+        <li>
+            <a href="#">Home</a>
+            <i style="font-size: 10px;" class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+            <a href="#">Sri Lanka</a>
+            <i style="font-size: 10px;" class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+            <a href="#">Nuwara Eliya District</a>
+            <i style="font-size: 10px;" class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+            <a href="#">Nuwara Eliya</a>
+            <i style="font-size: 10px;" class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+            <p>Search result</p>
+        </li>
+    </ul>
+</div>
+<div class="container search-result-page mt-3">
+    <div class="row">
+        <div class="col-lg-3 left">
+
+            <div class="filter-container mb-2">
+                <h5>Search</h5>
+                <div class="input-item">
+                    <p>Destination/property name</p>
+                    <div class="input-item-s">
+                        <div class="location-search">
+                            <ng-autocomplete
+                                [data]="locationData"
+                                [searchKeyword]="keyword"
+                                [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate"
+                                placeholder="Where do you want to go?"
+                                (selected)="onSelected($event)"
+                                (inputCleared)="onCleared()"
+                            >
+                            </ng-autocomplete>
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.location"></a>
+                            </ng-template>
+    
+                            <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                        </div>
+                        <!-- <i style="width: 40px;" class="fas fa-search"></i> -->
+                    </div>
+                </div>
+                <button class="btn" (click)="filterByLocation()">Search</button>
+            </div>
+
+            <div class="filter-container">
+                <h5>Filter</h5>
+                <!-- <div class="input-item">
+                    <p>Check-in date</p>
+                    <div class="input-item-container">
+                        <input type="date" >
+                    </div>
+                </div>
+                <div class="input-item">
+                    <p>Check-out date</p>
+                    <div class="input-item-container">
+                        <input type="date" >
+                    </div>
+                </div> -->
+                <div class="input-item">
+                    <p>Number Of Beds</p>
+                    <div class="input-item-container">
+                        <select name="number_of_beds" [(ngModel)]="number_of_beds">
+                            <option value="1" selected>1 beds</option>
+                            <option value="2">2 beds</option>
+                            <option value="3">3 beds</option>
+                        </select>
+                        <i style="width: 40px;" class="fa fa-sort"></i>
+                    </div>
+                </div>
+            
+                <div class="input-item">
+                    <p>Number Of Rooms</p>
+                    <div class="input-item-container">
+                        <select name="number_of_rooms"  [(ngModel)]="number_of_rooms">
+                            <option value="1" selected>1 room</option>
+                            <option value="2">2 room</option>
+                            <option value="3">3 room</option>
+                        </select>
+                        <i style="width: 40px;" class="fa fa-sort"></i>
+                    </div>
+                </div>
+                <button class="btn" (click)="listByMainFilter()">Filter</button>
+            </div>
+
+            <!--filter by-->
+            <div class="filter-by">
+                <h4>Filter by</h4>
+                <hr/>
+
+                <div class="filter-content">
+                    <h5>Health & safety</h5>
+                    <div class="filter-check">
+                        <input type="checkbox" >
+                        <p>Properties with additional health and safety</p>
+                        <p>148</p>
+                    </div>
+                </div>
+                <hr/>
+
+                <div class="filter-content">
+                    <h5>Popular Filters</h5>
+
+                    <div class="filter-check">
+                        <input type="checkbox" >
+                        <p>Hotels</p>
+                        <p>148</p>
+                    </div>
+
+                    <div class="filter-check">
+                        <input type="checkbox" >
+                        <p>Villas</p>
+                        <p>148</p>
+                    </div>
+
+                    <div class="filter-check">
+                        <input type="checkbox" >
+                        <p>5 start</p>
+                        <p>148</p>
+                    </div>
+
+                    <div class="filter-check">
+                        <input type="checkbox" >
+                        <p>Guesthouses</p>
+                        <p>148</p>
+                    </div>
+
+                </div>
+                <hr/>
+            </div>
+
+        </div>
+        <div class="col-lg-9 right">
+
+            <!--search card-->
+            
+            <div *ngFor="let hotel of hotels" class="search-card mt-4">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/square200/80061656.webp?k=c0e3a6528a4d0a4dcff008a6b203bca072ef92cf6739b80303832d0613d50e1e&o="
+                            width="200px" height="200px" class="img-thumbnail"
+                        />
+                    </div>
+                    <div class="col-7 description">
+                        <h3>{{hotel.name}}</h3>
+                        <a href="#">Nuwara Eliya City Center, Nuwara Eliya</a>
+                        <p>2.1 km from center</p>
+                        <div class="content">
+                           {{hotel.description}}
+                        </div>
+                    </div>
+                    <div class="col-2 action">
+                        <div class="review">
+                            <div class="left">
+                                <h3>Good</h3>
+                                <p>131 reviews</p>
+                            </div>
+                            <div class="right">
+                                7.9
+                            </div>
+                        </div>
+                        
+                        <button class="btn">Show Price</button>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="mt-3" aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+
+        </div>
+
+
+    </div>
+
+</div>

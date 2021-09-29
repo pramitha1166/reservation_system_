@@ -1,0 +1,69 @@
+.top-header {
+    background-color: #003580;
+}
+
+.search-section {
+    background-color: #f5f5f5;
+}
+
+.input-group-text {
+    height: 40px;
+}
+
+.num-of-person {
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: 40px;
+}
+
+.num-of-person-section {
+    position: absolute;
+    box-shadow: 0 2px 16px rgb(0 0 0 / 15%);
+    height: 200px;
+    width: 300px;
+    margin-top: 10px;
+    background-color: white;
+    padding: 20px;
+}
+
+.num-of-person-section .count-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.num-of-person-section .count-item .count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.num-of-person-section .count-item .count p {
+    margin-bottom: 0;
+}
+
+.num-of-person-section .count-item .count button {
+    border: 1px solid #003580;
+    margin: 0 10px;
+}
+
+.search-bar button {
+    width: 100%;
+}
