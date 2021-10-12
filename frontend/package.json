@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@ngrx/store": "^12.4.0",
     "angular-ng-autocomplete": "^2.0.5",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",

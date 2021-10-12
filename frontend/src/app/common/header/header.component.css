@@ -30,6 +30,9 @@
     font-weight: 800;
 }
 
+.hide {
+    display: none;
+}
 
 @media (max-width: 900px) {
     .up-header {

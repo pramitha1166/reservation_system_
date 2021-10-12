@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthCheck } from './models/Auth';
+
 
 @Component({
   selector: 'app-root',

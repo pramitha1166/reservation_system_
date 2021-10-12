@@ -1,0 +1,29 @@
+<header class="top-header">
+    <app-header></app-header>
+</header>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5 row p-4">
+        <form class="col-sm-6">
+            <div class="form-group mt-2">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" [(ngModel)]="authUser.email" name="authUser.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp"  class="form-text text-danger" [class.hide]="userExist==false">User already exist.</small>
+                <small id="emailHelp"  class="form-text text-danger" [class.hide]="invalidEmail==false">Invalid email. Please enter email in right format.</small>
+            </div>
+            <div class="form-group mt-2">
+                <label for="exampleInputEmail1">Password</label>
+                <input type="password" [(ngModel)]="authUser.password" name="authUser.password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+                <small id="emailHelp"  class="form-text text-danger" [class.hide]="invalidPassword==false">Invalid Password.</small>
+            </div>
+            <div class="mt-2 d-flex justify-content-between">
+                <button (click)="register()" class="btn btn-primary">Sign up</button>
+                <div>
+                    <p><a href="#" (click)="toLoginScreen($event)">Or sign in</a></p>
+                </div>
+            </div>
+            <div [class.hide]="registerSuccess==false" class="alert alert-primary mt-2">
+                Register Successfully <a (click)="toLoginScreen($event)" href="#">Please sign in</a>
+            </div>
+        </form>
+    </div>
+</div>

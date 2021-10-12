@@ -5,11 +5,14 @@
             <ul>
                 <li><button class="btn"><i style="color: white; font-size: 20px;" class="far fa-question-circle"></i></button></li>
                 <li class=""><button class="btn"><i style="color: white; font-size: 20px;" class="far fa-bell"></i></button></li>
-                <li>
+                <li [class.hide]="isLoggedIn==false">
                     <div class="d-flex flex-row justify-content-between">
                         <img class="rounded-circle" style="border: 2px solid #febb02;" width="40px" height="40px" src="https://lh3.googleusercontent.com/a-/AOh14GgTU-6ZMSCwckIoITeWth9H1qeMqNwbCFkIiTha=s96-c?sz=64" />
                         <p style="margin-left: 10px;font-weight: 400;color: white;">Pramitha Wanigarathne</p>
                     </div>
+                </li>
+                <li [class.hide]="isLoggedIn==true">
+                    <button (click)="routeToLoginPage()" class="btn btn-light btn-sm">sign in</button>
                 </li>
             </ul>
         </nav>

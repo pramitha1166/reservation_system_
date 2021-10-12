@@ -16,8 +16,10 @@ import { AngularFireModule } from '@angular/fire'
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LoginComponent } from './login/login.component';
-import { BottomHeaderComponent } from './common/bottom-header/bottom-header.component'
-
+import { BottomHeaderComponent } from './common/bottom-header/bottom-header.component';
+import { RegisterComponent } from './register/register.component';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './appstate/reducer/auth.reducer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { BottomHeaderComponent } from './common/bottom-header/bottom-header.comp
     HomeComponent,
     SearchResultPageComponent,
     LoginComponent,
-    BottomHeaderComponent
+    BottomHeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { BottomHeaderComponent } from './common/bottom-header/bottom-header.comp
     HttpClientModule,
     AutocompleteLibModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    StoreModule.forRoot(authReducer)
   ],
   providers: [HotelServiceService, LocationServiceService],
   bootstrap: [AppComponent]
