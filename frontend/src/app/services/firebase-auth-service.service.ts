@@ -24,10 +24,13 @@ export class FirebaseAuthServiceService {
     return new Promise((resolve, reject) => {
       this.angularFireAuth.signInWithEmailAndPassword(authData.email, authData.password)
       .then(res => {
-        console.log(res)
+        //console.log(res)
         resolve(res)
         var user = res.user
-        console.log(user)
+        //console.log('token',user?.getIdToken)
+        user?.getIdToken(true).then(token => {
+          console.log('token',token)
+        })
       })
       .catch(err => {
         console.log(err)
