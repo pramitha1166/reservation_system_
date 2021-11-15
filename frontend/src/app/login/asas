@@ -1,0 +1,19 @@
+
+    if(this.error=="") {
+      this.userNotFound = false
+      this.invalidPassword = false
+      this.invalidEmail = false
+    }
+    else if(this.error.code=="auth/user-not-found") {
+      this.userNotFound = true
+      this.invalidPassword = false
+      this.invalidEmail = false
+    }else if(this.error.code === "auth/wrong-password") {
+      this.userNotFound = false
+      this.invalidPassword = true
+      this.invalidEmail = false
+    }else if(this.error.code === "auth/invalid-email") {
+      this.userNotFound = false
+      this.invalidPassword = false
+      this.invalidEmail = true
+    }

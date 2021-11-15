@@ -1,0 +1,20 @@
+exhaustMap(() => {
+            return this.service.getAuthState().pipe(
+               // (playload => this.service.getAuthState()),
+                // map((data) => {
+                     if(data) {
+                         console.log('auth user',data?.displayName)
+                         const user = {
+                             name: data?.displayName,
+                             email: data?.email,
+                             uid: data?.uid
+                         }
+                         return new UserActions.Authenticated(user)
+                     }else {
+                         console.log("user not authenticated")
+                         return new UserActions.NotAuthenticated()
+                     }
+                    
+                // })
+            ).subscribe()
+        })

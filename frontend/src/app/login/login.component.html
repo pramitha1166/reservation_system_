@@ -3,7 +3,11 @@
 </header>
 <div class="container">
     <div class="d-flex justify-content-center mt-5 row p-4">
-        <form class="col-sm-6">
+        <form class="col-sm-8 col-10 col-lg-6">
+            <div class="row">
+                <h3 class="col-sm-12 col-lg-6 col-12">Welcome to booking.lk</h3>
+                <p class="col-sm-12 col-lg-6 col-12">New Member? <a href="#" (click)="toRegisterScreen($event)">Register here</a></p>
+            </div>
             <div class="form-group mt-2">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" [(ngModel)]="authUser.email" name="authUser.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -15,10 +19,21 @@
                 <input type="password" [(ngModel)]="authUser.password" name="authUser.password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
                 <small id="emailHelp"  class="form-text text-danger" [class.hide]="invalidPassword==false">Invalid Password.</small>
             </div>
-            <div class="mt-2 d-flex justify-content-between">
-                <button (click)="login()" class="btn btn-primary">Sign in</button>
-                <div>
-                    <p><a href="#" (click)="toRegisterScreen($event)">Or create account</a></p>
+            
+            <div class="mt-4">
+                <button (click)="login1()" class="btn btn-primary w-100">Sign in</button>
+            </div>
+            <p class="mt-2">Or signin with,</p>
+            <div class="d-flex">
+                <div class="card m-2 google-card" (click)="googleAuthLogin1()">
+                    <div class="card-body">
+                      <img src="../../assets/images/google.png"  />
+                    </div>
+                </div>
+                <div class="card m-2 google-card">
+                    <div class="card-body">
+                      <img src="../../assets/images/linkedin.png"  />
+                    </div>
                 </div>
             </div>
         </form>

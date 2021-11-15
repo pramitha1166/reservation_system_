@@ -7,8 +7,22 @@
                 <li class=""><button class="btn"><i style="color: white; font-size: 20px;" class="far fa-bell"></i></button></li>
                 <li [class.hide]="isLoggedIn==false">
                     <div class="d-flex flex-row justify-content-between">
-                        <img class="rounded-circle" style="border: 2px solid #febb02;" width="40px" height="40px" src="https://lh3.googleusercontent.com/a-/AOh14GgTU-6ZMSCwckIoITeWth9H1qeMqNwbCFkIiTha=s96-c?sz=64" />
-                        <p style="margin-left: 10px;font-weight: 400;color: white;">Pramitha Wanigarathne</p>
+                        <img class="rounded-circle" [class.hide]="authUser!=null" style="border: 2px solid #febb02;" width="40px" height="40px" src="https://www.kindpng.com/picc/m/24-248729_stockvader-predicted-adig-user-profile-image-png-transparent.png" />
+                        <img class="rounded-circle" [class.hide]="authUser==null" style="border: 2px solid #febb02;" width="40px" height="40px" src="{{authUser.photoURL}}" />
+                        <div class="user-dropdown">
+                            <div class="user-drop-title" (click)="showDrop()">
+                                <p style="margin-left: 10px;font-weight: 400;color: white;">{{authUser.email}}</p>
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div [class.hide]="!showDropMenu">
+                                <ul >
+                                    <li (click)="logout()">
+                                        <p>Logout</p>   
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li [class.hide]="isLoggedIn==true">

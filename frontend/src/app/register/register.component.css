@@ -9,3 +9,12 @@
 .hide {
     display: none;
 }
+
+.google-card {
+    cursor: pointer;
+}
+
+.google-card img {
+    width: 30px;
+    height: 30px;
+}

@@ -4,11 +4,11 @@ export interface Auth{
 }
 
 export interface AuthUser {
-    email: string,
-    phoneNumber: string,
-    photoURL: string,
+    email: string | null | undefined,
+    phoneNumber: string | null | undefined,
+    photoURL: string | null | undefined,
     uid: any,
-    emailVerified: boolean
+    emailVerified: boolean | null | undefined
 }
 
 export interface IUser {

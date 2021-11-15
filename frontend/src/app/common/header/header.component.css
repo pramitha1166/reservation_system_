@@ -1,3 +1,7 @@
+p {
+    margin: 0;
+    padding: 0;
+}
 .top-header {
     background-color: #003580;
 }
@@ -45,5 +49,46 @@
     .bottom-header {
         padding-top: 0px;
     }
+}
+
+.user-dropdown {
+    display: block;
+    margin-left: 5px;
+}
+
+.user-dropdown ul {
+    list-style: none;
+    background: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+}
+
+.user-dropdown ul li {
+    color: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-dropdown ul li p {
+    padding: 0;
+    margin: 0;
+}
+
+.user-dropdown .user-drop-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: white;
+}
+
+.user-dropdown .user-drop-title p {
+   margin-right: 5px;
 }
 

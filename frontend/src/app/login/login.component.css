@@ -1,5 +1,6 @@
+@import url('../common/colors/colors.css');
 .top-header {
-    background-color: #003580;
+    background-color:#003580;
 }
 
 .show {
@@ -8,4 +9,12 @@
 
 .hide {
     display: none;
+}
+.google-card {
+    cursor: pointer;
+}
+
+.google-card img {
+    width: 30px;
+    height: 30px;
 }

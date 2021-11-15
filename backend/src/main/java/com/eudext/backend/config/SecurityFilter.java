@@ -4,6 +4,7 @@ import com.eudext.backend.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
+import com.google.protobuf.MapEntry;
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.eudext.backend.model.Credentials;
 import org.springframework.web.server.ResponseStatusException;
@@ -62,6 +64,14 @@ public class SecurityFilter extends OncePerRequestFilter {
                 if(uid != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
 
+                    Map<String, Object> firebaseAuthrities = decodedToken.getClaims();
+                    System.out.println("claims: "+decodedToken.getClaims().get("admin"));
+                    for(Map.Entry<String, Object> entry: firebaseAuthrities.entrySet()) {
+                        System.out.println("authorities: "+entry.getValue());
+                    }
+
+                    authorityList.add(new CustomAutherities("admin"));
+
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user, new Credentials(null,decodedToken,requestedToken),authorityList);
                     System.out.println("usernamePasswordAuthenticationToken: "+ usernamePasswordAuthenticationToken);
                     //usernamePasswordAuthenticationToken.setAuthenticated(true);
@@ -71,11 +81,11 @@ public class SecurityFilter extends OncePerRequestFilter {
 
             } catch (FirebaseAuthException e) {
                 e.printStackTrace();
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Error! " + e.toString());
+               // throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Error! " + e.toString());
             }
 
         }else {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing token");
+            //throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing token");
         }
 
     }

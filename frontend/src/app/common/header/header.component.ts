@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {faAdjust, faArrowsAlt} from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
+import { AuthCheck, AuthUser } from 'src/app/models/Auth';
+import * as UserActions from '../../user_state/user.action'
 import { Store } from '@ngrx/store';
-import * as AuthActions from '../../appstate/actions/auth.action'
-import { AppState } from 'src/app/app.state';
-import { Observable } from 'rxjs';
-import { AuthCheck } from 'src/app/models/Auth';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,21 +11,57 @@ import { AuthCheck } from 'src/app/models/Auth';
 })
 export class HeaderComponent implements OnInit {
 
-  faAdjust = faAdjust;
-  faArrowsAlt = faArrowsAlt;
   isLoggedIn = false;
+  showDropMenu = false;
 
-  auth: Observable<AuthCheck>;
 
-  constructor(private router: Router, private store: Store<AppState>) { 
-    this.auth = this.store.select('auth')
-    console.log(this.auth)
+  public authUser: AuthUser = {
+    email: '',
+    phoneNumber: '',
+    photoURL: '',
+    uid: '',
+    emailVerified: false
+  }
+
+  constructor(private router: Router, private store: Store<any>) {
+    // this.authUser = JSON.parse(localStorage.getItem("user") || '{}')
+    // console.log("auth user local",this.authUser)
+    // //window.addEventListener("storage", function() {
+    //   //this.location.reload()
+    // //}, false)
+    // if(sessionStorage.getItem("isLoggedIn")===null) {
+    //   this.isLoggedIn = false
+    // }else {
+    //   this.isLoggedIn = true
+    // } 
+    
+
+    //console.log("isLoggedin", this.isLoggedIn)
+    
+  }
+
+  showDrop() {
+    this.showDropMenu = !this.showDropMenu
+  }
+
+  logout() {
+    localStorage.clear()
+
+    this.showDropMenu = false
+
+    sessionStorage.clear()
+
+    this.store.dispatch(new UserActions.Logout())
+
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new AuthActions.AuthenticateUser())
-    this.auth?.subscribe(res => {
-      console.log(res)
+    this.store.dispatch(new UserActions.GetUser())
+    this.store.select('users').subscribe(state => {
+      console.log("HEADER STATE", state)
+      this.authUser.email = state.email
+      this.isLoggedIn = state.isLoggedIn
+      this.authUser.photoURL = state.img
     })
   }
 
