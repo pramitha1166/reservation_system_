@@ -84,7 +84,7 @@ export class SearchseactionComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.location_id)
+    console.log("location id",this.location_id)
     if(this.location_id!==9999) {
       this.router.navigate(['search/',this.location_id])
     }

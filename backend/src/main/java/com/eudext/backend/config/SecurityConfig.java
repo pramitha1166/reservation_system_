@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/**").permitAll()
+                //.antMatchers("/").hasAnyAuthority()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);

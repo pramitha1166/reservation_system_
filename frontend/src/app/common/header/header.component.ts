@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthCheck, AuthUser } from 'src/app/models/Auth';
 import * as UserActions from '../../user_state/user.action'
 import { Store } from '@ngrx/store';
+import { userState } from '../../user_state/user.reducer'
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -57,11 +59,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new UserActions.GetUser())
-    this.store.select('users').subscribe(state => {
+    this.store.select('users').subscribe((state: userState) => {
       console.log("HEADER STATE", state)
       this.authUser.email = state.email
       this.isLoggedIn = state.isLoggedIn
       this.authUser.photoURL = state.img
+      console.log("Token", state.token)
     })
   }
 

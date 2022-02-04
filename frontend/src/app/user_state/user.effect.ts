@@ -12,11 +12,10 @@ import { Observable } from 'rxjs/observable'
 
 import { FirebaseAuthServiceService } from '../services/firebase-auth-service.service'
 import { Action } from '@ngrx/store'
-import { mergeMap } from 'rxjs/operators'
-import { switchMap } from 'rxjs-compat/operator/switchMap'
+import { mergeMap, switchMapTo, switchMap, tap } from 'rxjs/operators'
 import { map } from 'rxjs/operators'
 import { catchError } from 'rxjs/operators'
-import { of } from 'rxjs'
+import { from, of } from 'rxjs'
 import { ThrowStmt } from '@angular/compiler'
 import { exhaustMap } from 'rxjs/operators'
 
@@ -34,27 +33,39 @@ export class UserEffects {
                 map(data => {
                     if(data) {
                         console.log('auth user',data?.displayName)
+
+                        var tok;
+
+                        const getIdToken = (playload: any) => {
+                            playload?.getIdToken(true).then((token: any) => {
+                                console.log(token)
+                                return token
+                            })
+                        }
+
                         const user = {
                             name: data?.displayName,
                             email: data?.email,
                             uid: data?.uid,
-                            img: data?.photoURL
+                            img: data?.photoURL,
                         }
                         return new UserActions.Authenticated(user)
+                    
                     }else {
                         console.log("user not authenticated")
                         return new UserActions.NotAuthenticated()
                     }
                 })
             )
-        )
+        ),
     );
+
 
     @Effect()
     loginUser$ = this.actions$.pipe(
         ofType(UserActions.userStateActions.CUSTOM_LOGIN_ATTEMPT),
-        exhaustMap((action: UserActions.CustomLoginAttempt) => this.service.login(action.email, action.password)
-        .then(data => {
+        exhaustMap((action: UserActions.CustomLoginAttempt) => this.service.signin(action.email, action.password)
+        .then((data: any) => {
             if(data) {
                 console.log("login user", data.user)
                 const user = {

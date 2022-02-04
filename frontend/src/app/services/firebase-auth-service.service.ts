@@ -12,17 +12,20 @@ export class FirebaseAuthServiceService {
   constructor(private angularFireAuth: AngularFireAuth) { }
 
   login(email: string, password: string) {
-    var authUser: AuthUser = {
-      email: '',
-      phoneNumber: '',
-      photoURL: '',
-      uid: '',
-      emailVerified: false
-    }
-    return this.angularFireAuth.signInWithEmailAndPassword(email,password)
+   
+    return new Promise((resolve, reject) => {
+      this.angularFireAuth.signInWithEmailAndPassword(email,password)
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+    //return this.angularFireAuth.signInWithEmailAndPassword(email,password)
   }
 
-  signin(authData: Auth) {
+  signin(email: string, password: string) {
 
     var authUser: AuthUser = {
       email: '',
@@ -34,7 +37,7 @@ export class FirebaseAuthServiceService {
 
 
     return new Promise((resolve, reject) => {
-      this.angularFireAuth.signInWithEmailAndPassword(authData.email, authData.password)
+      this.angularFireAuth.signInWithEmailAndPassword(email,password)
       .then(res => {
         //console.log(res)
         resolve(res)
